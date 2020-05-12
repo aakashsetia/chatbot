@@ -1,0 +1,277 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "REOChampBot",
+    "version": "8",
+    "intents": [
+      {
+        "name": "AutoPilot_Intent",
+        "version": "18",
+        "fulfillmentActivity": {
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-west-2:517376437960:function:getDynamoDataToLex",
+            "messageVersion": "1.0"
+          },
+          "type": "CodeHook"
+        },
+        "sampleUtterances": [
+          "Trigger AutoPilot",
+          "Autopilot",
+          "Trigger AutoPilot Intent"
+        ],
+        "slots": [
+          {
+            "sampleUtterances": [],
+            "slotType": "Qcards",
+            "slotTypeVersion": "2",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Select the information you need on {Tool}"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"buttons\":[{\"text\":\"On-boarding\",\"value\":\"On-boarding\"},{\"text\":\"Off-boarding\",\"value\":\"Off-boarding\"},{\"text\":\"Link to Support Ticket\",\"value\":\"Link to Support Ticket\"},{\"text\":\"Confluence link to FAQs\",\"value\":\"Confluence link to FAQs\"},{\"text\":\"Team Slack Channel\",\"value\":\"Team Slack Channel\"}]}]}",
+              "maxAttempts": 2
+            },
+            "priority": 2,
+            "name": "Qcard"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "Tools",
+            "slotTypeVersion": "2",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Select the Product you want know about."
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"buttons\":[{\"text\":\"SplunkCloud\",\"value\":\"SplunkCloud\"},{\"text\":\"FlightRecorder\",\"value\":\"FlightRecorder\"},{\"text\":\"PagerDuty\",\"value\":\"PagerDuty\"},{\"text\":\"AdaptiveAlerting\",\"value\":\"AdaptiveAlerting\"},{\"text\":\"BigPanda\",\"value\":\"BigPanda\"}]}]}",
+              "maxAttempts": 2
+            },
+            "priority": 1,
+            "name": "Tool"
+          }
+        ]
+      },
+      {
+        "name": "REOorgIntent",
+        "version": "10",
+        "fulfillmentActivity": {
+          "type": "ReturnIntent"
+        },
+        "sampleUtterances": [
+          "Hi",
+          "Hello",
+          "Hey",
+          "Information",
+          "here",
+          "Help",
+          "I need help",
+          "I need information",
+          "yes",
+          "Yes",
+          "Yes Trigger REOorgIntent"
+        ],
+        "slots": [],
+        "conclusionStatement": {
+          "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"title\":\"Select a Card to get the list of Products under them\",\"buttons\":[{\"text\":\"AutoPilot\",\"value\":\"Trigger AutoPilot Intent\"},{\"text\":\"Reliability Orchestration Tools\",\"value\":\"Trigger Reliability Orchestration Tools Intent\"},{\"text\":\"SampleCard\",\"value\":\"SampleCard\"}]}]}",
+          "messages": [
+            {
+              "groupNumber": 1,
+              "contentType": "PlainText",
+              "content": "Hey there! I am REOChamp. I am here to help you."
+            }
+          ]
+        }
+      },
+      {
+        "name": "DPIPlatformHealthTools_Intent",
+        "version": "3",
+        "fulfillmentActivity": {
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-west-2:517376437960:function:getDynamoDataToLex",
+            "messageVersion": "1.0"
+          },
+          "type": "CodeHook"
+        },
+        "sampleUtterances": [
+          "Trigger Reliability Orchestration Tools Intent",
+          "Reliability Orchestration Tools",
+          "Trigger Reliability Orchestration Tools"
+        ],
+        "slots": [
+          {
+            "sampleUtterances": [],
+            "slotType": "Qcards",
+            "slotTypeVersion": "2",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Select the information you need on {Tool}"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"buttons\":[{\"text\":\"On-boarding\",\"value\":\"On-boarding\"},{\"text\":\"Off-boarding\",\"value\":\"Off-boarding\"},{\"text\":\"Link to Support Ticket\",\"value\":\"Link to Support Ticket\"},{\"text\":\"Confluence link to FAQs\",\"value\":\"Confluence link to FAQs\"},{\"text\":\"Team Slack Channel\",\"value\":\"Team Slack Channel\"}]}]}",
+              "maxAttempts": 2
+            },
+            "priority": 2,
+            "name": "Qcard"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "Tools",
+            "slotTypeVersion": "2",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Select the Product you want know about."
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"buttons\":[{\"text\":\"Stonebranch\",\"value\":\"Stonebranch\"},{\"text\":\"OMF\",\"value\":\"OMF\"},{\"text\":\"EMF\",\"value\":\"EMF\"},{\"text\":\"GlassBox\",\"value\":\"GlassBox\"},{\"text\":\"OpinionLAB\",\"value\":\"OpinionLAB\"}]}]}",
+              "maxAttempts": 2
+            },
+            "priority": 1,
+            "name": "Tool"
+          }
+        ]
+      },
+      {
+        "name": "GoodBye_Intent",
+        "version": "1",
+        "fulfillmentActivity": {
+          "type": "ReturnIntent"
+        },
+        "sampleUtterances": [
+          "No",
+          "no",
+          "Trigger NO",
+          "Trigger Goodbye Intent"
+        ],
+        "slots": [],
+        "conclusionStatement": {
+          "messages": [
+            {
+              "groupNumber": 1,
+              "contentType": "PlainText",
+              "content": "Ok. Thank you. Have a Great day!"
+            }
+          ]
+        }
+      }
+    ],
+    "slotTypes": [
+      {
+        "name": "Tools",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "SplunkCloud"
+          },
+          {
+            "value": "OMF"
+          },
+          {
+            "value": "SplunkDC"
+          },
+          {
+            "value": "GlassBox"
+          },
+          {
+            "value": "PagerDuty"
+          },
+          {
+            "value": "BigPanda"
+          },
+          {
+            "value": "OpinionLAB"
+          },
+          {
+            "value": "FlightRecorder"
+          },
+          {
+            "value": "Armor"
+          },
+          {
+            "value": "Stonebranch"
+          },
+          {
+            "value": "AdaptiveAlerting"
+          },
+          {
+            "value": "NotificationHub"
+          },
+          {
+            "value": "EMF"
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      },
+      {
+        "name": "Qcards",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "On-boarding"
+          },
+          {
+            "value": "Confluence link to FAQs"
+          },
+          {
+            "value": "Off-boarding"
+          },
+          {
+            "value": "Team Email"
+          },
+          {
+            "value": "How To Use Guide"
+          },
+          {
+            "value": "Team Slack Channel"
+          },
+          {
+            "value": "Link to Support Ticket"
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ],
+    "voiceId": "0",
+    "childDirected": false,
+    "locale": "en-US",
+    "idleSessionTTLInSeconds": 120,
+    "clarificationPrompt": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "This is not in REOChamps scope! But we are improving to server you better."
+        }
+      ],
+      "maxAttempts": 5
+    },
+    "abortStatement": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, I could not understand. Goodbye."
+        }
+      ]
+    },
+    "detectSentiment": true
+  }
+}
